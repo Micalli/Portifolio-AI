@@ -34,7 +34,6 @@ export class GeminiAIService {
 
       return response.text();
     } catch (error) {
-      console.log('🚀 ~ GeminiAIService ~ getResponse ~ error:', error);
       return 'Erro ao processar resposta.';
     }
   }

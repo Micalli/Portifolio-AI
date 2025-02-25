@@ -6,7 +6,6 @@ import { GeminiAIService } from 'src/vendor/openai/GeminiAI.service';
 export class ChatService {
   constructor(private chatService: GeminiAIService) {}
   create({ message }: CreateChatDto) {
-    console.log('🚀 ~ ChatService ~ create ~ message:', message);
     const response = this.chatService.getResponse(message);
 
     return response;
