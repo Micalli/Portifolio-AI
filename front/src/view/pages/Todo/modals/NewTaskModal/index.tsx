@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import { priorities } from "../../../../../app/config/constants";
 import { cn } from "../../../../../app/utils/cn";
 import { Button } from "../../../../components/Buttons";
 import { Input } from "../../../../components/Input";
 import { Modal } from "../../../../components/Modal";
-import { usePage } from "../../../PageContext/usePage";
 import { useTodoController } from '../../useTodoController';
 import { useNewTaskModalController } from "./useNewTaskModalController";
 
