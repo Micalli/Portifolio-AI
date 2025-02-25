@@ -1,13 +1,15 @@
+import { useEffect } from 'react';
 import { priorities } from "../../../../../app/config/constants";
 import { cn } from "../../../../../app/utils/cn";
 import { Button } from "../../../../components/Buttons";
 import { Input } from "../../../../components/Input";
 import { Modal } from "../../../../components/Modal";
 import { usePage } from "../../../PageContext/usePage";
+import { useTodoController } from '../../useTodoController';
 import { useNewTaskModalController } from "./useNewTaskModalController";
 
 export function NewTaskModal() {
-  const { closeNewTaskModal, isNewTaskModalOpen } = usePage();
+  const { closeNewTaskModal, isNewTaskModalOpen } = useTodoController();
 
   const {
     errors,
@@ -17,6 +19,8 @@ export function NewTaskModal() {
     prioritySelected,
     setPrioritySelected,
   } = useNewTaskModalController();
+  
+
   return (
     <Modal
       open={isNewTaskModalOpen}
@@ -31,7 +35,9 @@ export function NewTaskModal() {
           type="text"
           autoComplete="off"
           placeholder="Task"
-          className={`border border-gray-600 rounded-4xl px-3 py-2 placeholder:text-gray-500 focus:border-gray-500 w-full ${!errors && "mb-4"}   `}
+          className={`border border-gray-600 rounded-4xl px-3 py-2 placeholder:text-gray-500 focus:border-gray-500 w-full ${
+            !errors && "mb-4"
+          }   `}
           {...register("description")}
           error={errors}
         />

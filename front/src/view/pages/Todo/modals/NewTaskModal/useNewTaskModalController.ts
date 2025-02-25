@@ -6,7 +6,7 @@ import { z } from "zod";
 import { createTaskParams } from "../../../../../app/services/todoService/create";
 import { TodoService } from "../../../../../app/services/todoService";
 import toast from "react-hot-toast";
-import { usePage } from "../../../PageContext/usePage";
+import { useTodoController } from '../../useTodoController';
 
 const schema = z.object({
   description: z.string().min(1, "Descrição é obrigatória"),
@@ -14,7 +14,9 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 export function useNewTaskModalController() {
-  const { closeNewTaskModal } = usePage();
+  // const { closeNewTaskModal } = usePage();
+  const { closeNewTaskModal, openNewTaskModal, isNewTaskModalOpen } = useTodoController();
+
   const [prioritySelected, setPrioritySelected] = useState<
     "HIGH" | "MEDIUM" | "LOW" | null
   >(null);
@@ -61,5 +63,8 @@ export function useNewTaskModalController() {
     errors: errors.description?.message,
     setPrioritySelected,
     prioritySelected,
+    openNewTaskModal,
+    isNewTaskModalOpen,
+    closeNewTaskModal,
   };
 }

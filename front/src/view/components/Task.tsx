@@ -32,7 +32,6 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
           ${priority === "LOW" && "border-green-500"}
         `}
       >
-        {/* Checkbox e Descrição */}
         <div className="flex items-center space-x-3 flex-1">
           <CheckBox checked={finished} />
           <h1 className="text-white text-base md:text-lg sm:text-sm break-words w-full">
@@ -40,7 +39,6 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
           </h1>
         </div>
 
-        {/* Ícones de ação */}
         <div className="flex items-center space-x-3">
           <button
             className="cursor-pointer opacity-70 hover:opacity-100 transition-all disabled:cursor-not-allowed"
