@@ -40,6 +40,10 @@ export function useNewTaskModalController() {
 
   const handleSubmit = hookFormSubmit(async (data) => {
     try {
+      if (!prioritySelected) {
+        toast.error("Selecione uma prioridade!");
+        return;
+      }
       await mutateAsync({
         ...data,
         priority: prioritySelected,

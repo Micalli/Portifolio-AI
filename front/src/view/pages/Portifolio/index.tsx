@@ -49,7 +49,7 @@ export function Portifolio() {
             <span className="text-[#56ecb5] font-thin md:font-extralight flex justify-center md:justify-start">
               Olá, meu nome é
             </span>
-            <h1 className=" text-white font-bold  text-6xl md:text-7xl tracking-[-0.5px] flex ">
+            <h1 className=" text-white font-bold text-4xl  sm:text-6xl md:text-7xl tracking-[-0.5px] flex ">
               Bruno Micalli.
             </h1>
             <p className="text-gray-400 text-base md:text-lg  flex text-center md:text-start ">
@@ -66,15 +66,15 @@ export function Portifolio() {
                 />
               ))}
             </span>
-            <div className="w-full  flex justify-center items-center gap-10">
+            <div className="w-full  flex flex-col sm:flex-row justify-center items-center mt-10 gap-5">
               <a href={resume} download>
-                <Button className="mt-10  rounded-none w-40 font-medium  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853] hover:scale-95 ">
+                <Button className="  rounded-none w-40 font-medium  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853] hover:scale-95 ">
                   Baixar CV
                 </Button>
               </a>
 
               <Button
-                className="mt-10  rounded-none w-40 font-medium border-2 border-[#1BAC77] hover:border-[#137853] active:border-[#34dfa0] bg-transparent text-white hover:enabled:bg-[#137853] hover:scale-95 "
+                className=" rounded-none w-40 font-medium border-2 border-[#1BAC77] hover:border-[#137853] active:border-[#34dfa0] bg-transparent text-white hover:enabled:bg-[#137853] hover:scale-95 "
                 onClick={() => navigate("/contact")}
               >
                 Entre em contato
