@@ -6,6 +6,7 @@ import { iconsHabilities } from '../../../app/config/constants';
 import Me from "../../../assets/Me.svg";
 import { Button } from '../../components/Buttons';
 import { useNavigate } from 'react-router-dom';
+import resume from "../../../../static/Micalli-CV.pdf"
 
 
 export function Portifolio() {
@@ -26,11 +27,10 @@ export function Portifolio() {
       {windowWidth >= 768 && (
         <motion.div
           className="fixed top-0 left-0 w-[300px] h-[300px] bg-green-400 rounded-full  opacity-10  blur-3xl  pointer-events-none"
-          animate={{ x: position.x - 150, y: position.y - 150 }} 
+          animate={{ x: position.x - 150, y: position.y - 150 }}
           transition={{ type: "tween", ease: "easeOut", duration: 0.15 }}
         />
       )}{" "}
-      
       <div className="h-screen flex justify-center items-center gap-10 bg-[#19191b]">
         <AnimatePresence>
           <motion.aside
@@ -67,12 +67,12 @@ export function Portifolio() {
               ))}
             </span>
             <div className="w-full  flex justify-center items-center gap-10">
-              <Button
-                className="mt-10  rounded-none w-40 font-medium  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853] hover:scale-95 "
-                onClick={() => navigate("/contact")}
-              >
-                Baixar CV
-              </Button>
+              <a href={resume} download>
+                <Button className="mt-10  rounded-none w-40 font-medium  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853] hover:scale-95 ">
+                  Baixar CV
+                </Button>
+              </a>
+
               <Button
                 className="mt-10  rounded-none w-40 font-medium border-2 border-[#1BAC77] hover:border-[#137853] active:border-[#34dfa0] bg-transparent text-white hover:enabled:bg-[#137853] hover:scale-95 "
                 onClick={() => navigate("/contact")}
