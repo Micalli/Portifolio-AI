@@ -32,12 +32,12 @@ export function Header() {
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleOpenMenu}
-            className="cursor-pointer md:hidden flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="cursor-pointer md:hidden flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none mr-4"
           >
             {menuOpen ? (
               <Close className="text-white w-7 h-7" />
             ) : (
-              <HamburguerMenu className="text-white w-7 h-7 md:hidden" />
+              <HamburguerMenu className="text-white w-7 h-7 md:hidden " />
             )}
           </button>
           {windowWidth >= 768 && (
