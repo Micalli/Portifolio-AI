@@ -3,13 +3,11 @@
 </h1>
 </div>
 <h1 align="center">
-  <a href="https://micalli-dev.vercel.app/">
-    https://micalli-dev.vercel.app/
-  </a> - v1
+    micalli-dev.vercel.app - v1
 </h1>
 
 <p align="center">
- Primeira versão do portifolio <a href="#" target="_blank">URL do site</a> feito com <a href="https://react.dev/" target="_blank">React</a> e hospedado na <a href="https://www.vercel.com/" target="_blank">Vercel</a>
+ Primeira versão do portifolio <a href="https://micalli-dev.vercel.app/" target="_blank">https://micalli-dev.vercel.app/</a> feito com <a href="https://react.dev/" target="_blank">React</a> e hospedado na <a href="https://www.vercel.com/" target="_blank">Vercel</a>
 </p>
 
 ![demo](https://raw.githubusercontent.com/Micalli/Portifolio-AI/refs/heads/main/front/static/demo.png)
