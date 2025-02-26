@@ -1,16 +1,16 @@
-import {Aws} from "../../view/components/icons/Aws";
+import { Aws } from "../../view/components/icons/Aws";
 import { JavaScript } from "../../view/components/icons/JS";
-import { Tailwind } from '../../view/components/icons/Tailwind';
-import { Redis } from '../../view/components/icons/Redis';
-import { Prisma } from '../../view/components/icons/Prisma';
-import { PostgreeSql } from '../../view/components/icons/PostgreeSql';
-import { NodeJs } from '../../view/components/icons/NodeJs';
-import { NestJs } from '../../view/components/icons/NestJs';
-import { TypeScript } from '../../view/components/icons/TS';
-import { GitHub } from '../../view/components/icons/GitHub';
-import { Instagram } from '../../view/components/icons/Instagram';
-import { Linkedin } from '../../view/components/icons/Linkedin';
-import { WhatsApp } from '../../view/components/icons/WhatsApp';
+import { Tailwind } from "../../view/components/icons/Tailwind";
+import { Redis } from "../../view/components/icons/Redis";
+import { Prisma } from "../../view/components/icons/Prisma";
+import { PostgreeSql } from "../../view/components/icons/PostgreeSql";
+import { NodeJs } from "../../view/components/icons/NodeJs";
+import { NestJs } from "../../view/components/icons/NestJs";
+import { TypeScript } from "../../view/components/icons/TS";
+import { GitHub } from "../../view/components/icons/GitHub";
+import { Instagram } from "../../view/components/icons/Instagram";
+import { Linkedin } from "../../view/components/icons/Linkedin";
+import { WhatsApp } from "../../view/components/icons/WhatsApp";
 
 export const liOptions = [
   {
@@ -18,8 +18,8 @@ export const liOptions = [
     path: "/",
   },
   {
-    name: "Chat",
-    path: "/chat",
+    name: "Projetos",
+    path: "/projects",
   },
   {
     name: "Sobre",
@@ -29,17 +29,15 @@ export const liOptions = [
     name: "Contato",
     path: "/contact",
   },
- 
   {
-    name: "Projetos",
-    path: "/projects",
+    name: "Chat",
+    path: "/chat",
   },
   {
-    name: "Todo",
+    name: "To do",
     path: "/todo",
   },
 ];
-
 
 export const iconsHabilities = [
   {
@@ -72,11 +70,11 @@ export const iconsHabilities = [
   },
   {
     title: "Tailwind",
-    icon: Tailwind
+    icon: Tailwind,
   },
   {
     title: "Typescript",
-    icon: TypeScript
+    icon: TypeScript,
   },
 ];
 
@@ -98,7 +96,6 @@ export const socialMidia = [
     icon: WhatsApp,
   },
 ];
-
 
 interface teste {
   priority: "Alta" | "Média" | "Baixa";
