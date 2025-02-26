@@ -3,7 +3,9 @@
 </h1>
 </div>
 <h1 align="center">
-  URL - v1
+  <a href="https://micalli-dev.vercel.app/">
+    https://micalli-dev.vercel.app/
+  </a> - v1
 </h1>
 
 <p align="center">
@@ -17,7 +19,7 @@
 <img src="https://skillicons.dev/icons?i=typescript,javascript,html,css,docker,git,prisma,nodejs,nestjs,react,vite,tailwindcss" width="415px" alt="Technologies" />
 
 ## 📂 Descrição
-Um portifolio contando um pouco sobre mim e meu conhecimentos. Integraçãp com o GeminiAI, com um chat para perguntar sobre mim.
+Um portifolio contando um pouco sobre mim e meu conhecimentos.Um chatbot para voce fazer perguntas sobre mim. E um CRUD de uma lista de afazeres.
 
 #### Clone
 
