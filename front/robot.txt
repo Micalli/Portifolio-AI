@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /drafts/
+Disallow: /tmp/
+Disallow: /assets/downloads/
+
+# Permitir acesso a arquivos específicos importantes para SEO
+Allow: /sitemap.xml
+Allow: /portfolio-sitemap.xml
+
+# Permitir todos os bots de redes sociais para melhorar compartilhamento
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Taxa de crawling para evitar sobrecarga do servidor
+Crawl-delay: 10
+
+# Localização do sitemap
+Sitemap: https://micalli-dev.vercel.app/sitemap.xml
