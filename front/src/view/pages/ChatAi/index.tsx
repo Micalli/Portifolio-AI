@@ -72,7 +72,7 @@ export function ChatAi() {
         >
           <Input
             autoComplete="off"
-            placeholder="Me pergunte sobre minha experiencias, projetos, linkedin e hobbies..."
+            placeholder="Pergunte sobre minhas experiencias, projetos, formação, linkedin e github..."
             {...register("message")}
             disabled={isPending}
             className="flex-1 border border-gray-600 rounded-4xl px-3 py-2 placeholder:text-gray-500 focus:border-gray-500  "
