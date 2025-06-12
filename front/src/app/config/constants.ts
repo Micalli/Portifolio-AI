@@ -33,10 +33,7 @@ export const liOptions = [
     name: "Chat",
     path: "/chat",
   },
-  {
-    name: "To do",
-    path: "/todo",
-  },
+  
 ];
 
 export const iconsHabilities = [
