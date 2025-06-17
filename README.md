@@ -46,7 +46,7 @@ Em seguida dê esses comandos para criar a tabela dentro do container
 docker exec -it pg bash
 
 #Entra no postgres
-psql -U bash root
+psql -U root
 
 #Cria o banco
 CREATE DATABASE nomeDoBanco;
