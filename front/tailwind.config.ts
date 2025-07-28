@@ -1,12 +1,60 @@
 /** @type {import('tailwindcss').Config} */
-  export default {
-    content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ["DM Sans", "sans-serif"],
-        },
+module.exports = {
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Lato", "sans-serif"],
+      },
+      colors: {
+        background: "#181926",
+        card: "#232946",
+        border: "#393E5C",
+        primary: "#F4F4FB",
+        secondary: "#A1A6C8",
+        accent: "#21E6C1",
+        accentHover: "#16B89F",
+        info: "#3A7DFF",
+        error: "#FF6B6B",
+        warning: "#FFD166",
       },
     },
-    plugins: [],
-  };
+  },
+  plugins: [],
+  safelist: [
+    "bg-background",
+    "bg-card",
+    "bg-border",
+    "bg-accent",
+    "bg-accentHover",
+    "bg-info",
+    "bg-error",
+    "bg-warning",
+    "text-primary",
+    "text-secondary",
+    "text-accent",
+    "text-info",
+    "text-error",
+    "text-warning",
+    "border-background",
+    "border-card",
+    "border-border",
+    "border-accent",
+    "border-info",
+    "border-error",
+    "border-warning",
+    "hover:bg-card",
+    "hover:bg-accent",
+    "hover:bg-accentHover",
+    "hover:bg-border/10",
+    "hover:bg-info",
+    "active:bg-card",
+    "active:bg-accent",
+    "active:bg-info",
+    "bg-background/80",
+    "bg-error/10",
+    "fill-accent",
+    "fill-info",
+    "text-background",
+  ],
+};

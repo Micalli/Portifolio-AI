@@ -15,7 +15,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         type="text"
         name={name}
         className={cn(
-          "outline-none text-white transition-all disabled:cursor-not-allowed disabled:opacity-30  ",
+          "outline-none text-primary transition-all disabled:cursor-not-allowed disabled:opacity-30  ",
           className
         )}
         placeholder={placeholder}
@@ -25,7 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {...props}
       />
       {error && (
-        <div className="flex gap-2 items-center ml-2 text-red-700">
+        <div className="flex gap-2 items-center ml-2 text-error">
           <CrossCircledIcon />
           <span className="text-xs">{error}</span>
         </div>

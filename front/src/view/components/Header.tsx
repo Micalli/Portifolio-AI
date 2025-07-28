@@ -20,11 +20,11 @@ export function Header() {
  
 
   return (
-    <div className="flex flex-col w-full h-screen z-10   ">
-      <nav className=" bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between  ">
+    <div className="flex flex-col w-full z-10">
+      <nav className="bg-background border-b border-border/20">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
           <div>
-            <img src={Logo} alt="" className="w-30 h-30" />
+            <img src={Logo} alt="" className="w-8 h-8 md:w-10 md:h-10" />
           </div>
           <button
             data-collapse-toggle="navbar-default"
@@ -32,24 +32,24 @@ export function Header() {
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleOpenMenu}
-            className="cursor-pointer md:hidden flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none mr-4"
+            className="cursor-pointer md:hidden flex items-center p-2 w-10 h-10 justify-center text-sm text-secondary rounded-lg hover:bg-card focus:outline-none"
           >
             {menuOpen ? (
               <Close className="text-white w-7 h-7" />
             ) : (
-              <HamburguerMenu className="text-white w-7 h-7 md:hidden " />
+              <HamburguerMenu className="text-white w-7 h-7" />
             )}
           </button>
           {windowWidth >= 768 && (
             <nav className="hidden md:flex md:w-auto">
-              <ul className="text-lg sm:text-xl md:text-2xl xl:text-3xl font-medium md:p-0 border w-full rounded-lg md:flex md:flex-wrap md:space-x-6 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700 mr-4">
+              <ul className="text-lg sm:text-xl md:text-2xl xl:text-3xl font-medium md:p-0 border w-full rounded-lg md:flex md:flex-wrap md:space-x-6 md:mt-0 md:border-0 bg-card md:bg-background border-border mr-4">
                 {liOptions.map((li) => (
                   <li
                     key={li.name}
                     className={cn(
-                      `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-[#56ecb5] hover:bg-gray-700 active:bg-gray-800 transition-colors`,
+                      `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-primary md:hover:text-accent hover:bg-card active:bg-card transition-colors`,
                       actveMenu === li.name &&
-                        "md:text-[#56ecb5] bg-[#56ecb5] md:bg-transparent hover:bg-[#56ecb5] text-black"
+                        "md:text-accent bg-accent md:bg-transparent hover:bg-accent text-background"
                     )}
                     onClick={() => {
                       navigate(li.path);
@@ -74,16 +74,16 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="w-full md:block md:w-auto absolute top-30 left-0"
+                  className="w-full md:block md:w-auto absolute top-30 left-0 z-[100] "
                 >
-                  <ul className="flex-col p-4 m-2 md:p-0 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700 z-40">
+                  <ul className="flex-col p-4 m-2 md:p-0 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-card md:bg-background border-border z-40">
                     {liOptions.map((li) => (
                       <li
                         key={li.name}
                         className={cn(
-                          `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-white md:hover:text-[#56ecb5] hover:bg-gray-700 active:bg-gray-800 transition-colors ${
+                          `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-primary md:hover:text-accent hover:bg-card active:bg-card transition-colors ${
                             actveMenu === li.name &&
-                            "md:text-[#56ecb5] bg-[#56ecb5] md:bg-transparent hover:bg-[#56ecb5] text-black"
+                            "md:text-accent bg-accent md:bg-transparent hover:bg-accent text-background"
                           }`
                         )}
                         onClick={() => {

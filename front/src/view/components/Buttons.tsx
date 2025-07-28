@@ -21,13 +21,12 @@ export function Button({
       {...props}
       disabled={disabled || isLoading}
       className={cn(
-        "p-2 cursor-pointer disabled:cursor-not-allowed bg-[#34D399] rounded-4xl hover:enabled:bg-[#2cac7d] transition-all active:enabled:bg-[#34dfa0] flex justify-center  ",
+        "p-2 cursor-pointer disabled:cursor-not-allowed bg-accent rounded-4xl hover:enabled:bg-accentHover transition-all active:enabled:bg-accent flex justify-center items-center  ",
         disabled && "opacity-10",
         isLoading && "bg-transparent opacity-50",
-        variant === "danger" && "bg-red-900 hover:enabled:bg-red-800",
+        variant === "danger" && "bg-error hover:enabled:bg-error/80",
         variant === "ghost" &&
-          "bg-transparent  hover:enabled:bg-gray-800/70 text-gray-400 border border-gray-400 ",
-
+          "bg-transparent  hover:enabled:bg-card text-secondary border border-secondary ",
         className
       )}
     >

@@ -6,7 +6,7 @@ interface BadgesProps {
 
 export function Badges({title,icon}:BadgesProps) {
   return (
-    <div className=" flex text-xs md:text-sm gap-2 items-center justify-center text-white border border-gray-500 rounded-full px-2 py-1 bg-slate-800/50 ">
+    <div className=" flex text-xs md:text-sm gap-2 items-center justify-center text-primary border border-border rounded-full px-2 py-1 bg-card ">
       {icon}
       {title}
     </div>

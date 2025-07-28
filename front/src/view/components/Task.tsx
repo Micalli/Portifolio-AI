@@ -27,14 +27,14 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
           bg-slate-800/50 hover:bg-[rgba(148,163,184,0.1)] rounded-2xl py-4 px-4 
           w-full max-w-lg transition flex items-center justify-between h-auto 
           border-b-2 
-          ${priority === "HIGH" && "border-red-500"}
-          ${priority === "MEDIUM" && "border-yellow-500"}
-          ${priority === "LOW" && "border-green-500"}
+          ${priority === "HIGH" && "border-error"}
+          ${priority === "MEDIUM" && "border-warning"}
+          ${priority === "LOW" && "border-accent"}
         `}
       >
         <div className="flex items-center space-x-3 flex-1">
           <CheckBox checked={finished} />
-          <h1 className="text-white text-base md:text-lg sm:text-sm break-words w-full">
+          <h1 className="text-primary text-base md:text-lg sm:text-sm break-words w-full">
             {description}
           </h1>
         </div>
@@ -45,8 +45,8 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
             disabled={finished}
           >
             <CheckIcon
-              className={`w-5 h-5 md:w-6 md:h-6 hover:text-green-500 ${
-                finished && "hover:text-white"
+              className={`w-5 h-5 md:w-6 md:h-6 hover:text-accent ${
+                finished && "hover:text-primary"
               }`}
             />
           </button>
@@ -60,7 +60,7 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
             className="cursor-pointer opacity-70 hover:opacity-100 transition-all"
             onClick={() => openDeleteTaskModal(taskId)}
           >
-            <Trash className="w-5 h-5 md:w-6 md:h-6 text-red-400" />
+            <Trash className="w-5 h-5 md:w-6 md:h-6 text-error" />
           </button>
         </div>
       </div>
