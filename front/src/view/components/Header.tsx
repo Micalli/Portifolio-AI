@@ -22,9 +22,9 @@ export function Header() {
   return (
     <div className="flex flex-col w-full z-10">
       <nav className="bg-background border-b border-border/20">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
-          <div>
-            <img src={Logo} alt="" className="w-8 h-8 md:w-10 md:h-10" />
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between ">
+          <div className=' ml-5'>
+            <img src={Logo} alt="" className="w-18 h-18 md:w-28 md:h-28" />
           </div>
           <button
             data-collapse-toggle="navbar-default"
@@ -32,7 +32,7 @@ export function Header() {
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleOpenMenu}
-            className="cursor-pointer md:hidden flex items-center p-2 w-10 h-10 justify-center text-sm text-secondary rounded-lg hover:bg-card focus:outline-none"
+            className="cursor-pointer md:hidden flex items-center mt-5 mr-5 w-10 h-10 justify-center text-sm text-secondary rounded-lg hover:bg-card focus:outline-none"
           >
             {menuOpen ? (
               <Close className="text-white w-7 h-7" />
