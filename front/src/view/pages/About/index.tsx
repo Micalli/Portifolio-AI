@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { socialMidia } from "../../../app/config/constants";
 import { useWindowWidth } from "../../../app/hooks/useWindowWidth";
 import { motion } from "framer-motion";
+import { User } from 'lucide-react';
 
 export function About() {
   const windowWidth = useWindowWidth();
@@ -50,60 +51,65 @@ export function About() {
               <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-info bg-clip-text text-transparent mb-4">
                 Sobre Mim
               </h1>
-            
+
             </motion.div>
 
-              {/* About Card */}
-              <motion.div
-                className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-xl"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                <h2 className="text-2xl font-bold text-primary mb-6 flex items-center">
-                  <span className="text-accent mr-3">👨‍💻</span>
-                  Quem sou eu
-                </h2>
-                <div className="space-y-4 text-secondary leading-relaxed">
-                  <p>
-                    Sou um desenvolvedor back-end apaixonado por criar soluções
-                    escaláveis e seguras. Minha especialidade está em NestJS,
-                    JavaScript, Java, AWS e bancos de dados SQL/NoSQL, além de
-                    práticas avançadas como TDD, SOLID, DDD e Design Patterns.
-                    Tenho experiência no desenvolvimento de sistemas
-                    financeiros, integração de APIs e otimização de aplicações
-                    para alto desempenho.
-                  </p>
-                  <p>
-                    Atualmente, estou focado no desenvolvimento de dois
-                    projetos: 
-                    <p>
+            {/* About Card */}
+            <motion.div
+              className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-xl"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <h2 className="text-2xl font-bold text-primary mb-6 flex items-center">
+                <span className="text-accent mr-3">
+                  <User className="w-8 h-8" />
+                </span>
+                Quem sou eu
+              </h2>
+              <div className="space-y-6 text-secondary leading-relaxed text-lg">
+                <p>
+                  Sou desenvolvedor fullstack com foco em aplicações web modernas, automação
+                  e integrações complexas com APIs. Tenho experiência sólida com
+                  JavaScript e TypeScript, atuando principalmente com Node.js, NestJS
+                  no back-end e React no front-end, sempre priorizando arquitetura,
+                  escalabilidade e qualidade de código.
+                </p>
 
-                    🟢 FinCheck – Uma plataforma para gestão de
-                    finanças pessoais, ajudando usuários a organizarem suas
-                    receitas, despesas e obterem insights financeiros. 
-                    </p>
-                    <p>
+                <p>
+                  Ao longo da minha trajetória, trabalhei em sistemas financeiros,
+                  plataformas SaaS e soluções baseadas em inteligência artificial.
+                  Participei do desenvolvimento de uma fintech com operações como Pix,
+                  boletos e transferências bancárias, lidando com alto volume de
+                  requisições e otimizando APIs para melhorar performance e estabilidade.
+                </p>
 
-                    🏢 SaaS para Gestão de Condomínios – Um sistema que facilita a
-                    administração de condomínios, oferecendo recursos para
-                    gestão financeira, comunicação interna e automação de
-                    processos.(Em breve)
-                    </p>
-                  </p>
-                  <p>
-                    Formado em Análise e Desenvolvimento de Sistemas pela
-                    Universidade Metodista de São Paulo, também participei de um
-                    bootcamp na Generation, aprofundando meus conhecimentos em
-                    Java, Angular e MySQL.
-                  </p>
-                </div>
-              </motion.div>
+                <p>
+                  Também atuei na criação de uma plataforma de inteligência artificial
+                  integrada ao WhatsApp, utilizando a API da OpenAI, transcrição de áudio
+                  com Whisper, WebSocket para atualizações em tempo real e automações
+                  conectadas ao N8N. Além disso, contribuí em projetos de social listening,
+                  trabalhando com grandes volumes de dados e visualizações analíticas
+                  para apoio à tomada de decisão.
+                </p>
 
-           
+                <p>
+                  Tenho experiência com AWS, PostgreSQL, bancos SQL e NoSQL, além de boas
+                  práticas como TDD, SOLID, Design Patterns e Code Review. Gosto de atuar
+                  em ambientes colaborativos, com metodologias ágeis, buscando sempre
+                  evoluir tecnicamente e entregar soluções eficientes e bem estruturadas.
+                </p>
 
-         
 
+
+                <p>
+                  Formado em Análise e Desenvolvimento de Sistemas pela
+                  Universidade Metodista de São Paulo, também participei de um
+                  bootcamp na Generation, aprofundando meus conhecimentos em
+                  Java, Angular e MySQL.
+                </p>
+              </div>
+            </motion.div>
             {/* Social Media */}
             <motion.div
               className="mt-16 text-center"

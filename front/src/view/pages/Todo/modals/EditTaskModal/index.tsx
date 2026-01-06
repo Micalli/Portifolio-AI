@@ -27,20 +27,17 @@ export function EditTaskModal({updatedTaskId} : EditTaskModalProps) {
         <Input
           type="text"
           autoComplete="off"
-          placeholder="Tarefa"
-          className={`border border-gray-600 rounded-4xl px-3 py-2 placeholder:text-gray-500 focus:border-gray-500 w-full ${
-            !errors && "mb-4"
-          }   `}
+          placeholder="Nome da tarefa"
           {...register("description")}
           error={errors}
         />
 
         <Button
-          className="mt-6  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853]"
+          className="w-full h-12 bg-gradient-to-r from-accent to-accentHover text-background font-semibold rounded-xl hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 mt-6"
           type="submit"
           isLoading={isPending}
         >
-          Editar
+          Salvar Alterações
         </Button>
       </form>
     </Modal>

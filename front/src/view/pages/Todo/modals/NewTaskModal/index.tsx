@@ -32,50 +32,27 @@ export function NewTaskModal() {
         <Input
           type="text"
           autoComplete="off"
-          placeholder="Task"
-          className={`border border-gray-600 rounded-4xl px-3 py-2 placeholder:text-gray-500 focus:border-gray-500 w-full ${
-            !errors && "mb-4"
-          }   `}
+          placeholder="Nome da tarefa"
           {...register("description")}
           error={errors}
         />
-        Escolha a prioridade da tarefa
-        <div className="flex gap-4 justify-center">
+        <div className="text-secondary text-sm text-center mb-2">Escolha a prioridade</div>
+        <div className="flex gap-4 justify-center mb-4">
           {priorities.map(({ priority, value }) => (
             <div
+              key={value}
               className="cursor-pointer"
               onClick={() => setPrioritySelected(value)}
             >
               <div
-                className={cn(`border w-fit px-4 py-1 rounded-full text-base opacity-70 
-                    ${
-                      priority === "Alta" &&
-                      "border-red-400  bg-red-500/50 hover:bg-red-500/70"
-                    }
-                    ${
-                      priority === "Média" &&
-                      "border-yellow-400 bg-yellow-500/50 hover:bg-yellow-500/70"
-                    }
-                    ${
-                      priority === "Baixa" &&
-                      " border-green-400 bg-green-500/50 hover:bg-green-500/70"
-                    }
-                    ${
-                      prioritySelected === "HIGH" &&
-                      priority === "Alta" &&
-                      "  bg-red-500/80 opacity-100 "
-                    }
-                    ${
-                      prioritySelected === "MEDIUM" &&
-                      priority === "Média" &&
-                      " bg-yellow-500/80  opacity-100"
-                    }
-                    ${
-                      prioritySelected === "LOW" &&
-                      priority === "Baixa" &&
-                      " bg-green-500/80  opacity-100 "
-                    }
-                `)}
+                className={cn(`border w-fit px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300`,
+                  priority === "Alta" && "border-error/50 text-error hover:bg-error/10",
+                  priority === "Média" && "border-warning/50 text-warning hover:bg-warning/10",
+                  priority === "Baixa" && "border-accent/50 text-accent hover:bg-accent/10",
+                  prioritySelected === "HIGH" && priority === "Alta" && "bg-error text-white border-error shadow-lg shadow-error/25",
+                  prioritySelected === "MEDIUM" && priority === "Média" && "bg-warning text-background border-warning shadow-lg shadow-warning/25",
+                  prioritySelected === "LOW" && priority === "Baixa" && "bg-accent text-background border-accent shadow-lg shadow-accent/25"
+                )}
               >
                 {priority}
               </div>
@@ -83,11 +60,11 @@ export function NewTaskModal() {
           ))}
         </div>
         <Button
-          className="mt-6  bg-[#1BAC77] text-white  hover:enabled:bg-[#137853]"
+          className="w-full h-12 bg-gradient-to-r from-accent to-accentHover text-background font-semibold rounded-xl hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
           type="submit"
           isLoading={isPending}
         >
-          Criar
+          Criar Tarefa
         </Button>
       </form>
     </Modal>

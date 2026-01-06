@@ -1,52 +1,63 @@
-import {
-  GoogleGenerativeAI,
-  HarmBlockThreshold,
-  HarmCategory,
-  GenerativeModel,
-  ChatSession,
-} from '@google/generative-ai';
+import OpenAI from 'openai';
 
 export class GeminiAIService {
-  private genAI: GoogleGenerativeAI;
-  private model: GenerativeModel;
-  private chat: ChatSession;
+  private openai: OpenAI;
+  private conversationHistory: Array<{
+    role: 'user' | 'assistant' | 'system';
+    content: string;
+  }>;
 
   constructor() {
-    this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const apiKey = process.env.OPENAI_API_KEY;
 
-    this.model = this.genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash',
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-      ],
+    if (!apiKey) {
+      throw new Error('OPENAI_API_KEY não definida');
+    }
+
+    this.openai = new OpenAI({
+      apiKey: apiKey,
     });
 
-    this.chat = this.model.startChat({
-      history: [
-        {
-          role: 'user',
-          parts: [{ text: process.env.BASE_CONTEXT }],
-        },
-      ],
-    });
+    const baseContext = process.env.BASE_CONTEXT;
+
+    this.conversationHistory = baseContext
+      ? [{ role: 'system' as const, content: baseContext }]
+      : [];
   }
 
   async getResponse(prompt: string): Promise<string> {
     try {
-      if (!this.chat) return 'A IA ainda está carregando. Tente novamente.';
+      const MAX_CHARS = 6000; // ~1500 tokens
 
-      const totalTokens = await this.model.countTokens([prompt]);
-      if (totalTokens.totalTokens >= 1500) return 'Limite de tokens excedido.';
+      if (prompt.length > MAX_CHARS) {
+        return 'Mensagem muito longa.';
+      }
 
-      const result = await this.chat.sendMessage(prompt);
-      const response = await result.response;
+      // Adiciona a mensagem do usuário ao histórico
+      this.conversationHistory.push({
+        role: 'user',
+        content: prompt,
+      });
 
-      return response.text();
+      const completion = await this.openai.chat.completions.create({
+        model: 'gpt-4o-mini',
+        messages: this.conversationHistory,
+        temperature: 0.7,
+      });
+
+      const assistantMessage =
+        completion.choices[0]?.message?.content ||
+        'Erro ao processar resposta.';
+
+      // Adiciona a resposta do assistente ao histórico
+      this.conversationHistory.push({
+        role: 'assistant',
+        content: assistantMessage,
+      });
+
+      return assistantMessage;
     } catch (error) {
-      console.error('Erro:', error);
+      console.error('Erro OpenAI:', error);
       return 'Erro ao processar resposta.';
     }
   }

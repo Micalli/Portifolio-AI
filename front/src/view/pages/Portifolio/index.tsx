@@ -7,6 +7,7 @@ import Me from "../../../assets/Me.svg";
 import { Button } from "../../components/Buttons";
 import { useNavigate } from "react-router-dom";
 import resume from "../../../../static/Micalli-CV.pdf";
+import { FileText, MessageCircle } from 'lucide-react';
 
 export function Portifolio() {
   const windowWidth = useWindowWidth();
@@ -42,7 +43,7 @@ export function Portifolio() {
 
       <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-card/50 relative overflow-hidden">
         {/* Grid Pattern Background */}
-        <div className='absolute inset-0 bg-[url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] opacity-30' />
+        <div className='absolute inset-0 bg-[url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] opacity-15' />
 
         <div className="relative z-10 min-h-screen flex justify-center items-center gap-10 px-4 pt-20 md:pt-0">
           <AnimatePresence>
@@ -130,8 +131,8 @@ export function Portifolio() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button className="rounded-xl w-full sm:w-48 h-12 md:h-14 font-semibold bg-gradient-to-r from-accent to-accentHover text-background hover:from-accentHover hover:to-accent shadow-lg shadow-accent/25 transition-all duration-300">
-                    📄 Baixar CV
+                  <Button className="rounded-xl w-full sm:w-48 h-12 md:h-14 font-semibold  shadow-lg shadow-accent/25 transition-all duration-300 gap-2 flex">
+                    <FileText /> Baixar CV
                   </Button>
                 </motion.a>
 
@@ -141,10 +142,10 @@ export function Portifolio() {
                   className="w-full sm:w-auto"
                 >
                   <Button
-                    className="rounded-xl items-center  sm:w-48 h-12 md:h-14 font-semibold border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-background shadow-lg shadow-accent/10 transition-all duration-300"
+                    className="rounded-xl items-center  sm:w-48 h-12 md:h-14 font-semibold border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-background shadow-lg shadow-accent/10 transition-all duration-300 flex gap-2"
                     onClick={() => navigate("/contact")}
                   >
-                    💬 Entre em contato
+                      <MessageCircle /> Entre em contato
                   </Button>
                 </motion.div>
               </motion.div>

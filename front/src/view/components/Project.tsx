@@ -3,43 +3,64 @@ interface ProjectProps {
   title: string;
   description: string;
   link: string;
+  forks_count: number;
   stars: number;
-  createdAt:string
+
+  createdAt: string
+  language: string
+
 }
+import { ArrowUpRight } from 'lucide-react';
 import { formatDate } from '../../app/utils/formatDate';
+import { truncateText } from '../../app/utils/truncateText';
 
 export function Project({
   description,
   title,
   link,
+  language,
+  forks_count,
   stars,
   createdAt
 }: ProjectProps) {
   return (
-    <a href={link} target='_blank'>
-      <div className=" group  flex items-center gap-2 md:gap-6 hover:bg-border/10 px-6 pt-6 pb-2 rounded-lg shadow-lg w-full max-w-2xl transition-all ">
-        
-        <div className=" flex-col text-primary flex-wrap">
-          <div className="md:text-lg font-semibold flex items-center gap-1 text-base">
-            {title}
-            <span className=" group-hover:text-accent group-hover:translate-x-2 group-hover:-translate-y-2 transition-all">
-              ↗
-            </span>
-          </div>
-          <p className="text-secondary text-sm mt-1 line-clamp-none md:line-clamp-3 ">
-            {description}
-          </p>
+    <a href={link} target='_blank' rel="noopener noreferrer" className="block h-full">
+      <div className="flex flex-col h-full">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <div className="md:text-xl  flex items-center gap-2 text-primary mb-2 justify-between">
+              <div className='flex items-center gap-2 font-bold'>
 
-          <div className="mt-2 flex flex-col gap-2 ">
-            <span className="text-secondary text-sm">⭐ {stars}</span>
+                {truncateText(title, 17)}
+                <span className="text-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300">
+                  <ArrowUpRight className="w-5 h-5" />
+                </span>
+              </div>
 
-            <div className="flex gap-2 flex-wrap justify-center items-end  ">
-              <span className=" text-border  text-xs px-3 py-1 rounded-full">
-                Criado em {formatDate(new Date(createdAt))}
-              </span>
+              <span className='text-xs text-secondary/70'>Criado em {formatDate(new Date(createdAt))}</span>
             </div>
+            <p className="text-secondary text-sm leading-relaxed line-clamp-3 mb-4">
+              {description}
+            </p>
           </div>
+          <div>
+
+            {language && (
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs text-secondary bg-border/30 px-2 py-1 rounded-full">
+                  {language}
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-secondary">⭐ {stars}</span>
+                  <span className="text-xs text-secondary">🔀 {forks_count || 0}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
         </div>
+
+
       </div>
     </a>
   );

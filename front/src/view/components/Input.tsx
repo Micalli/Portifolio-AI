@@ -15,7 +15,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         type="text"
         name={name}
         className={cn(
-          "outline-none text-primary transition-all disabled:cursor-not-allowed disabled:opacity-30  ",
+          "w-full bg-background/50 border border-border/30 rounded-xl px-4 py-3 text-primary placeholder:text-secondary/50 outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50",
+          error && "border-error focus:border-error focus:ring-error",
           className
         )}
         placeholder={placeholder}

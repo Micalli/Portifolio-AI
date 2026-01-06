@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Project } from '../../components/Project';
 import { Spinner } from '../../components/Spinner';
+import { Input } from '../../components/Input';
 import { useProjectsController } from './useProjectsController';
 import { useWindowWidth } from '../../../app/hooks/useWindowWidth';
 import { motion, AnimatePresence } from "framer-motion";
@@ -81,12 +82,12 @@ export function Projects() {
               <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
                 {/* Search Input */}
                 <div className="relative w-full max-w-md">
-                  <input
-                    type="text"
+                  <Input
+                    name="search"
                     placeholder="Buscar projetos..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl px-4 py-3 text-primary placeholder:text-secondary focus:outline-none focus:border-accent/50 transition-all duration-300"
+                    className="bg-card/50 backdrop-blur-sm pr-10"
                   />
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary">
                     🔍
@@ -183,23 +184,14 @@ export function Projects() {
                           <Project
                             title={project.name}
                             description={project.description}
-                            link={project.homepage ?? project.html_url}
+                            link={project.homepage || project.html_url}
                             stars={project.stargazers_count}
                             createdAt={project.created_at}
+                            forks_count={project.forks_count}
+                            language={project.language}
                           />
                           
-                          {/* Project Language Badge */}
-                          {project.language && (
-                            <div className="mt-4 flex items-center justify-between">
-                              <span className="text-xs text-secondary bg-border/30 px-2 py-1 rounded-full">
-                                {project.language}
-                              </span>
-                              <div className="flex items-center gap-2">
-                                <span className="text-xs text-secondary">⭐ {project.stargazers_count}</span>
-                                <span className="text-xs text-secondary">🔀 {project.forks_count || 0}</span>
-                              </div>
-                            </div>
-                          )}
+                        
                         </div>
                       </motion.div>
                     ))}

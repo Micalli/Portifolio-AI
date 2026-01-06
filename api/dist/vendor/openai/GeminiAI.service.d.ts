@@ -1,7 +1,6 @@
 export declare class GeminiAIService {
-    private genAI;
-    private model;
-    private chat;
+    private openai;
+    private conversationHistory;
     constructor();
     getResponse(prompt: string): Promise<string>;
 }

@@ -5,6 +5,8 @@ import { useWindowWidth } from "../../../app/hooks/useWindowWidth";
 import { motion } from "framer-motion";
 import { useContactController } from "./useContactController";
 import { socialMidia } from '../../../app/config/constants';
+import { Send } from '../../components/Send';
+import { Mail } from 'lucide-react';
 
 export function Contact() {
   const {
@@ -71,7 +73,7 @@ export function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-info bg-clip-text text-transparent mb-4">
+              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary to-accent  bg-clip-text text-transparent mb-4">
                 Vamos Conversar
               </h1>
               <p className="text-secondary text-lg md:text-xl max-w-2xl mx-auto">
@@ -103,7 +105,6 @@ export function Contact() {
                     type="text"
                     name="name"
                     placeholder="Digite seu nome completo"
-                    className="w-full bg-background/50 border border-border/30 rounded-xl px-4 py-3 text-primary placeholder:text-secondary focus:border-accent/50 focus:outline-none transition-all duration-300"
                   />
                 </motion.div>
 
@@ -123,7 +124,6 @@ export function Contact() {
                     name="email"
                     type="email"
                     placeholder="seu@email.com"
-                    className="w-full bg-background/50 border border-border/30 rounded-xl px-4 py-3 text-primary placeholder:text-secondary focus:border-accent/50 focus:outline-none transition-all duration-300"
                   />
                 </motion.div>
 
@@ -142,7 +142,7 @@ export function Contact() {
                     name="message"
                     placeholder="Conte-me sobre seu projeto ou oportunidade..."
                     rows={5}
-                    className="w-full bg-background/50 border border-border/30 rounded-xl px-4 py-3 text-primary placeholder:text-secondary focus:border-accent/50 focus:outline-none transition-all duration-300 resize-none"
+                    className="w-full bg-background/50 border border-border/30 rounded-xl px-4 py-3 text-primary placeholder:text-secondary/50 outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all duration-300 resize-none disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </motion.div>
 
@@ -155,7 +155,7 @@ export function Contact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-14 font-semibold bg-gradient-to-r from-accent to-accentHover text-background hover:from-accentHover hover:to-accent shadow-lg shadow-accent/25 transition-all duration-300 rounded-xl"
+                    className="w-full h-14 font-semibold    transition-all duration-300 "
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center">
@@ -164,7 +164,7 @@ export function Contact() {
                       </div>
                     ) : (
                       <div className="flex items-center justify-center">
-                        <span className="mr-2">📧</span>
+                        <Send className="w-5 h-5 mr-2" />
                         Enviar Mensagem
                       </div>
                     )}
@@ -189,7 +189,7 @@ export function Contact() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <span className="text-2xl mr-3">📧</span>
+                    <Mail className="w-6 h-6 mr-3 text-accent" />
                     <div className="text-left">
                       <div className="text-primary font-medium">Email</div>
                       <div className="text-secondary text-sm">

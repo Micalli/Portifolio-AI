@@ -1,6 +1,6 @@
 import { Button } from './Buttons';
-import { Trash } from './icons/Trash';
 import { Modal } from "./Modal";
+import { Trash2 } from "lucide-react";
 
 interface ConfirmDeleteModalProps {
     onConfirm(): void;
@@ -21,7 +21,7 @@ export function ConfirmDeleteModal({
       <Modal open title="Excluir" onClose={onClose}>
         <div className="flex flex-col items-center text-center gap-6">
           <div className="w-[52px] h-[52px] rounded-full bg-error/10 flex items-center justify-center" onClick={onClose}>
-            <Trash className="w-6 h-6 text-error" />
+            <Trash2 className="w-6 h-6 text-error" />
           </div>
           <p className=" w-[180px] text-secondary tracking-[-0.5px] font-bold">
             {title}

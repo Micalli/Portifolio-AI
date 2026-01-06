@@ -1,9 +1,7 @@
 import { usePage } from "../pages/PageContext/usePage";
 import { useTodoController } from "../pages/Todo/useTodoController";
 import { CheckBox } from "./CheckBox";
-import { Pen } from "./icons/Pen";
-import { Trash } from "./icons/Trash";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { Pencil, Trash2, Check } from "lucide-react";
 
 interface TaskProps {
   taskId: string;
@@ -18,18 +16,18 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
 
   return (
     <div
-      className={`p-4 w-full flex flex-col items-center ${
+      className={`w-full flex flex-col items-center ${
         finished && "opacity-40"
       }`}
     >
       <div
         className={`
-          bg-slate-800/50 hover:bg-[rgba(148,163,184,0.1)] rounded-2xl py-4 px-4 
-          w-full max-w-lg transition flex items-center justify-between h-auto 
-          border-b-2 
-          ${priority === "HIGH" && "border-error"}
-          ${priority === "MEDIUM" && "border-warning"}
-          ${priority === "LOW" && "border-accent"}
+          bg-card/50 backdrop-blur-sm hover:bg-card/70 rounded-2xl py-4 px-4 
+          w-full transition flex items-center justify-between h-auto 
+          border border-border/20 border-l-4 shadow-sm hover:shadow-md
+          ${priority === "HIGH" && "border-l-error"}
+          ${priority === "MEDIUM" && "border-l-warning"}
+          ${priority === "LOW" && "border-l-accent"}
         `}
       >
         <div className="flex items-center space-x-3 flex-1">
@@ -44,7 +42,7 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
             className="cursor-pointer opacity-70 hover:opacity-100 transition-all disabled:cursor-not-allowed"
             disabled={finished}
           >
-            <CheckIcon
+            <Check
               className={`w-5 h-5 md:w-6 md:h-6 hover:text-accent ${
                 finished && "hover:text-primary"
               }`}
@@ -54,13 +52,13 @@ export function Task({ description, priority, finished, taskId }: TaskProps) {
             className="cursor-pointer opacity-70 hover:opacity-100 transition-all"
             onClick={() => openUpdateTaskModal(taskId)}
           >
-            <Pen className="w-5 h-5 md:w-6 md:h-6 " />
+            <Pencil className="w-5 h-5 md:w-6 md:h-6 " />
           </button>
           <button
             className="cursor-pointer opacity-70 hover:opacity-100 transition-all"
             onClick={() => openDeleteTaskModal(taskId)}
           >
-            <Trash className="w-5 h-5 md:w-6 md:h-6 text-error" />
+            <Trash2 className="w-5 h-5 md:w-6 md:h-6 text-error" />
           </button>
         </div>
       </div>

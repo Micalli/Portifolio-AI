@@ -1,14 +1,14 @@
 import { Message } from "../../components/Message";
 import { Button } from "../../components/Buttons";
-import { Send } from "../../components/Send";
 import { Input } from "../../components/Input";
 import { useChatAiController } from "./useChatAiController";
 import { TypingIndicator } from "../../components/TypingIndicator";
 import { InitialScreenChat } from "../../components/InitialScreenChat";
-import { Clear } from "../../components/icons/Clear";
+import { Trash2, Bot, MessageSquare, SendHorizontal } from "lucide-react";
 import { useWindowWidth } from "../../../app/hooks/useWindowWidth";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Spinner } from '../../components/Spinner';
 
 export function ChatAi() {
   const {
@@ -65,7 +65,7 @@ export function ChatAi() {
             <div className="flex items-center justify-between max-w-4xl mx-auto">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-r from-accent to-info rounded-full flex items-center justify-center">
-                  <span className="text-background text-lg">🤖</span>
+                  <Bot className="text-background w-6 h-6" />
                 </div>
                 <div>
                   <h1 className="text-xl font-bold text-primary">Bruno AI Assistant</h1>
@@ -80,7 +80,7 @@ export function ChatAi() {
                 whileTap={{ scale: 0.95 }}
                 title="Limpar conversa"
               >
-                <Clear classname="w-8 h-8" />
+                <Trash2 className="w-6 h-6" />
               </motion.button>
             </div>
           </motion.div>
@@ -106,7 +106,7 @@ export function ChatAi() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="overflow-y-auto px-6 py-4"
+                  className="overflow-y-auto px-6 py-4 h-full [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-accent/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-accent/40"
                 >
                   <div className="max-w-4xl mx-auto space-y-6">
                     <AnimatePresence>
@@ -165,12 +165,12 @@ export function ChatAi() {
                   placeholder="Pergunte sobre minhas experiências, projetos, formação, LinkedIn e GitHub..."
                   {...register("message")}
                   disabled={isPending}
-                  className="w-full bg-background/50 border border-border/30 rounded-2xl px-4 py-4 text-primary placeholder:text-secondary focus:border-accent/50 focus:outline-none transition-all duration-300 pr-12"
+                  className="pr-12 py-4 rounded-2xl"
                 />
                 
                 {/* Character count or typing indicator */}
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary text-xs">
-                  {isPending ? "🤖" : "💬"}
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary">
+                  {isPending ? <Bot className="w-5 h-5" /> : <MessageSquare className="w-5 h-5" />}
                 </div>
               </div>
               
@@ -179,14 +179,15 @@ export function ChatAi() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
+                size='icon'
                   type="submit"
                   disabled={isPending}
-                  className="h-12 w-12 rounded-2xl bg-gradient-to-r from-accent to-accentHover text-background hover:from-accentHover hover:to-accent shadow-lg shadow-accent/25 transition-all duration-300 flex items-center justify-center"
+                  className=" h-14 rounded-2xl  transition-all duration-300 flex items-center justify-center "
                 >
                   {isPending ? (
-                    <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                    <Spinner />
                   ) : (
-                    <Send className="w-5 h-5" />
+                    <SendHorizontal className="w-5 h-5 text-black" />
                   )}
                 </Button>
               </motion.div>

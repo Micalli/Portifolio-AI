@@ -1,108 +1,130 @@
-import Logo from "../../../public/logo.svg";
-import { Outlet, useNavigate } from "react-router";
-import {  useState } from "react";
-import { HamburguerMenu } from "./icons/HamburguerMenu";
-import { liOptions } from "../../app/config/constants";
-import { cn } from "../../app/utils/cn";
-import { usePortifolioController } from "../pages/Portifolio/usePortifolioController";
-import { useWindowWidth } from "../../app/hooks/useWindowWidth";
-import { Close } from "./icons/Close";
-import { motion, AnimatePresence } from "framer-motion";
-import { localStorageKeys } from "../../app/config/localStorageKeys";
+import Logo from "../../../public/logo.svg"
+import { Outlet, useNavigate } from "react-router"
+import { useState } from "react"
+import { Menu, X } from "lucide-react"
+import { liOptions } from "../../app/config/constants"
+import { cn } from "../../app/utils/cn"
+import { usePortifolioController } from "../pages/Portifolio/usePortifolioController"
+import { useWindowWidth } from "../../app/hooks/useWindowWidth"
+import { motion, AnimatePresence } from "framer-motion"
+import { localStorageKeys } from "../../app/config/localStorageKeys"
 
 export function Header() {
-  const storedPage = localStorage.getItem(localStorageKeys.pageActive);
-  const [actveMenu, setActiveMenu] = useState(storedPage ?? "Início");
-  const { handleOpenMenu, menuOpen } = usePortifolioController();
-  const windowWidth = useWindowWidth();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const windowWidth = useWindowWidth()
+  const { handleOpenMenu, menuOpen } = usePortifolioController()
 
- 
+  const storedPage =
+    localStorage.getItem(localStorageKeys.pageActive) ?? "Início"
+
+  const [activeMenu, setActiveMenu] = useState(storedPage)
+
+  function handleNavigate(name: string, path: string) {
+    navigate(path)
+    localStorage.setItem(localStorageKeys.pageActive, name)
+    setActiveMenu(name)
+    if (menuOpen) handleOpenMenu()
+  }
+
+  const isDesktop = windowWidth >= 768
 
   return (
-    <div className="flex flex-col w-full z-10">
-      <nav className="bg-background border-b border-border/20">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between ">
-          <div className=' ml-5'>
-            <img src={Logo} alt="" className="w-18 h-18 md:w-28 md:h-28" />
-          </div>
+    <div className="relative flex min-h-screen flex-col">
+      <header className="sticky top-0 z-50  bg-black/50 backdrop-blur-lg  py-2">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          {/* Logo */}
           <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-            onClick={handleOpenMenu}
-            className="cursor-pointer md:hidden flex items-center mt-5 mr-5 w-10 h-10 justify-center text-sm text-secondary rounded-lg hover:bg-card focus:outline-none"
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 focus:outline-none"
           >
-            {menuOpen ? (
-              <Close className="text-white w-7 h-7" />
-            ) : (
-              <HamburguerMenu className="text-white w-7 h-7" />
-            )}
+            <img
+              src={Logo}
+              alt="Logo"
+              className="h-24 w-24 md:h-30 md:w-30"
+            />
           </button>
-          {windowWidth >= 768 && (
-            <nav className="hidden md:flex md:w-auto">
-              <ul className="text-lg sm:text-xl md:text-2xl xl:text-3xl font-medium md:p-0 border w-full rounded-lg md:flex md:flex-wrap md:space-x-6 md:mt-0 md:border-0 bg-card md:bg-background border-border mr-4">
-                {liOptions.map((li) => (
-                  <li
-                    key={li.name}
-                    className={cn(
-                      `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-primary md:hover:text-accent hover:bg-card active:bg-card transition-colors`,
-                      actveMenu === li.name &&
-                        "md:text-accent bg-accent md:bg-transparent hover:bg-accent text-background"
-                    )}
-                    onClick={() => {
-                      navigate(li.path);
-                      localStorage.setItem(
-                        localStorageKeys.pageActive,
-                        li.name
-                      );
-                      setActiveMenu(li.name);
-                    }}
-                  >
-                    {li.name}
+
+          {/* Desktop menu */}
+          {isDesktop && (
+            <ul className="flex items-center gap-4">
+              {liOptions.map((li) => {
+                const isActive = activeMenu === li.name
+
+                return (
+                  <li key={li.name}>
+                    <button
+                      aria-current={isActive ? "page" : undefined}
+                      onClick={() => handleNavigate(li.name, li.path)}
+                      className={cn(
+                        "rounded-full px-4 py-2 text-sm font-medium transition-all cursor-pointer",
+                        isActive
+                          ? "bg-accent text-background shadow-md shadow-accent/20"
+                          : "text-secondary hover:bg-card hover:text-primary"
+                      )}
+                    >
+                      {li.name}
+                    </button>
                   </li>
-                ))}
-              </ul>
-            </nav>
+                )
+              })}
+            </ul>
           )}
-          {windowWidth <= 768 && (
-            <AnimatePresence>
-              {menuOpen && (
-                <motion.nav
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="w-full md:block md:w-auto absolute top-30 left-0 z-[100] "
-                >
-                  <ul className="flex-col p-4 m-2 md:p-0 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-card md:bg-background border-border z-40">
-                    {liOptions.map((li) => (
-                      <li
-                        key={li.name}
-                        className={cn(
-                          `cursor-pointer block py-2 px-3 rounded-sm md:hover:bg-transparent md:border-0 md:p-0 text-primary md:hover:text-accent hover:bg-card active:bg-card transition-colors ${
-                            actveMenu === li.name &&
-                            "md:text-accent bg-accent md:bg-transparent hover:bg-accent text-background"
-                          }`
-                        )}
-                        onClick={() => {
-                          navigate(li.path);
-                          setActiveMenu(li.name);
-                          handleOpenMenu();
-                        }}
-                      >
-                        {li.name}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.nav>
+
+          {/* Mobile button */}
+          {!isDesktop && (
+            <button
+              aria-label="Abrir menu"
+              onClick={handleOpenMenu}
+              className="flex h-10 w-10 items-center justify-center rounded-lg transition hover:bg-border/10"
+            >
+              {menuOpen ? (
+                <X className="h-6 w-6 text-primary" />
+              ) : (
+                <Menu className="h-6 w-6 text-primary" />
               )}
-            </AnimatePresence>
+            </button>
           )}
         </div>
-      </nav>
-      <Outlet />
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {!isDesktop && menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute top-full left-0 w-full  border-t border-border/40 bg-black/95 backdrop-blur-lg flex flex-col"
+            >
+              <ul className="mt-4 space-y-2">
+                {liOptions.map((li) => {
+                  const isActive = activeMenu === li.name
+
+                  return (
+                    <li key={li.name}>
+                      <button
+                        onClick={() => handleNavigate(li.name, li.path)}
+                        className={cn(
+                          "w-full rounded-xl px-4 py-3 text-left text-base font-medium transition",
+                          isActive
+                            ? "bg-accent/10 text-accent border border-accent/20"
+                            : "text-secondary hover:bg-card hover:text-primary"
+                        )}
+                      >
+                        {li.name}
+                      </button>
+                    </li>
+                  )
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      <main className="flex-1 w-full">
+        <Outlet />
+      </main>
     </div>
-  );
+  )
 }
