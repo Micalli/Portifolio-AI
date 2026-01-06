@@ -52,7 +52,7 @@ psql -U root
 CREATE DATABASE nomeDoBanco;
 ```
 
-## Entre em contado
+## Entre em contato
 Feito com :green_heart: por [Bruno Micalli](https://github.com/micalli).
 
 
